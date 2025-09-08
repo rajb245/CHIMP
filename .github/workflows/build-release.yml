@@ -27,6 +27,7 @@ jobs:
       run: msbuild src\CHIMP\CHIMP.sln /p:Configuration=Release /p:Platform="Any CPU"
 
     - name: Create release package
+      shell: cmd
       run: |
         mkdir release-package
         xcopy "src\CHIMP\CHIMP\bin\Release" "release-package\" /E /I /Y
