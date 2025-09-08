@@ -29,9 +29,8 @@ jobs:
     - name: Create release package
       run: |
         mkdir release-package
-        copy "src\CHIMP\CHIMP\bin\Release\*.exe" release-package\
-        copy "src\CHIMP\CHIMP\bin\Release\*.dll" release-package\
-        copy "src\CHIMP\CHIMP\bin\Release\*.config" release-package\
+        xcopy "src\CHIMP\CHIMP\bin\Release" "release-package\" /E /I /Y
+        del "release-package\*.pdb" /s /q
 
     - name: Upload build artifacts
       uses: actions/upload-artifact@v4
